@@ -10,6 +10,15 @@ public class CardGame : MonoBehaviour
     [SerializeField] public int handCapacity;
     [SerializeField] List<CardLayout> layouts = new();
     private readonly Dictionary<CardInstance, CardView> _cardInstances = new();
+    
+    private void Update()
+    {
+        // Убираем пробелы при розырыше карт
+        foreach (var layout in layouts)
+        {
+            RecalculateLayout(layout.layoutId);
+        }
+    }
 
     private void Awake()
     {
@@ -80,4 +89,16 @@ public class CardGame : MonoBehaviour
             }
         }
     }
+    
+    private void RecalculateLayout(int layoutId)
+    {
+        List<CardView> cardsInLayout =
+            GetCardsInLayout(layoutId).OrderBy(view => view.CardInstance.CardPosition).ToList();
+
+        for (int i = 0; i < cardsInLayout.Count; i++)
+        {
+            cardsInLayout[i].CardInstance.CardPosition = i + 1;
+        }
+    }
+    
 }
