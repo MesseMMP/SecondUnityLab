@@ -1,6 +1,6 @@
 public class CardInstance
 {
-    public CardAsset CardAsset;
+    public readonly CardAsset CardAsset;
 
     public CardInstance(CardAsset asset)
     {

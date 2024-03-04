@@ -2,10 +2,21 @@ using UnityEngine;
 
 public class CardView : MonoBehaviour
 {
-    public CardInstance CardInstance;
+    private CardInstance _cardInstance;
 
-    public void Init(CardInstance instance)
+    public void Init(CardInstance cardInstance)
     {
-        CardInstance = instance;
+        _cardInstance = cardInstance;
+        UpdateCardSprite();
+    }
+    
+    // Присваиваем созданному префабу изображение лицевой стороны из CardAsset
+    private void UpdateCardSprite()
+    {
+        var frontImage = transform.GetChild(0).transform.GetChild(0);
+        if (frontImage)
+        {
+            frontImage.GetComponent<SpriteRenderer>().sprite = _cardInstance.CardAsset.cardImage;
+        }
     }
 }
