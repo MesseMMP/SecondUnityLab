@@ -10,7 +10,7 @@ public class CardGame : MonoBehaviour
     [SerializeField] public int handCapacity;
     [SerializeField] List<CardLayout> layouts = new();
     private readonly Dictionary<CardInstance, CardView> _cardInstances = new();
-    
+
     private void Update()
     {
         // Убираем пробелы при розырыше карт
@@ -79,6 +79,9 @@ public class CardGame : MonoBehaviour
 
     private void StartTurn()
     {
+        // Тасование колоды перед раздачей
+        ShuffleLayout(1);
+        
         foreach (var playerLayout in layouts.Where(playerLayout => playerLayout.playerLayout))
         {
             for (int i = 0; i < handCapacity; i++)
@@ -89,7 +92,7 @@ public class CardGame : MonoBehaviour
             }
         }
     }
-    
+
     private void RecalculateLayout(int layoutId)
     {
         List<CardView> cardsInLayout =
@@ -100,5 +103,16 @@ public class CardGame : MonoBehaviour
             cardsInLayout[i].CardInstance.CardPosition = i + 1;
         }
     }
-    
+
+    private void ShuffleLayout(int layoutId)
+    {
+        List<CardView> cardsInLayout = GetCardsInLayout(layoutId);
+        List<int> positions = cardsInLayout.Select(cardView => cardView.CardInstance.CardPosition).ToList();
+        foreach (var cardView in cardsInLayout)
+        {
+            var randomPos = Random.Range(0, positions.Count);
+            cardView.CardInstance.CardPosition = positions[randomPos];
+            positions.RemoveAt(randomPos);
+        }
+    }
 }
