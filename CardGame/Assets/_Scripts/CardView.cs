@@ -23,8 +23,8 @@ public class CardView : MonoBehaviour
     // Реализация поворота карт
     public void Rotate(bool faceUp)
     {
-        var front = transform.GetChild(0).transform.GetChild(0);
-        var back = transform.GetChild(0).transform.GetChild(1);
+        var front = transform.GetChild(0);
+        var back = transform.GetChild(1);
         front.gameObject.SetActive(faceUp);
         back.gameObject.SetActive(!faceUp);
     }
