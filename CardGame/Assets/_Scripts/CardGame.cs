@@ -1,18 +1,19 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CardGame : MonoBehaviour
 {
-    private static CardGame _instance;
+    public static CardGame Instance;
     [SerializeField] public List<CardAsset> initialCards;
     [SerializeField] public GameObject cardPrefab;
     private Dictionary<CardInstance, CardView> _cardInstances = new();
 
     private void Awake()
     {
-        if (_instance == null)
+        if (Instance == null)
         {
-            _instance = this;
+            Instance = this;
         }
         else
         {
@@ -46,5 +47,10 @@ public class CardGame : MonoBehaviour
         cardView.Init(cardInstance);
 
         _cardInstances.Add(cardInstance, cardView);
+    }
+    
+    public List<CardView> GetCardsInLayout(int layoutId)
+    {
+        return (from pair in _cardInstances where pair.Key.LayoutId == layoutId select pair.Value).ToList();
     }
 }

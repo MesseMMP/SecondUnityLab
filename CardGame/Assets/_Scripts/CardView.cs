@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class CardView : MonoBehaviour
 {
-    private CardInstance _cardInstance;
+    public CardInstance CardInstance;
 
     public void Init(CardInstance cardInstance)
     {
-        _cardInstance = cardInstance;
+        CardInstance = cardInstance;
         UpdateCardSprite();
     }
     
@@ -16,7 +16,7 @@ public class CardView : MonoBehaviour
         var frontImage = transform.GetChild(0).transform.GetChild(0);
         if (frontImage)
         {
-            frontImage.GetComponent<SpriteRenderer>().sprite = _cardInstance.CardAsset.cardImage;
+            frontImage.GetComponent<SpriteRenderer>().sprite = CardInstance.CardAsset.cardImage;
         }
     }
 }
