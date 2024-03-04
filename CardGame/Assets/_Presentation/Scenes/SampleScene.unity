@@ -236,7 +236,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -474,6 +474,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 73ebeb2875f394eed887422f30869104, type: 2}
   - {fileID: 11400000, guid: 91ffa00e8a63b4e0e8cc0d6b5008f2bb, type: 2}
   cardPrefab: {fileID: 6480693792845264389, guid: 3b77efb3c470f4241a7ac4b714f7bc22, type: 3}
+  handCapacity: 6
+  layouts:
+  - {fileID: 1774776471}
+  - {fileID: 1256157871}
+  - {fileID: 1661889471}
+  - {fileID: 209749798}
+  - {fileID: 1967837134}
 --- !u!4 &1717697548
 Transform:
   m_ObjectHideFlags: 0

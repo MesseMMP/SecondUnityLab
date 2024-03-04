@@ -7,7 +7,9 @@ public class CardGame : MonoBehaviour
     public static CardGame Instance;
     [SerializeField] public List<CardAsset> initialCards;
     [SerializeField] public GameObject cardPrefab;
-    private Dictionary<CardInstance, CardView> _cardInstances = new();
+    [SerializeField] public int handCapacity;
+    [SerializeField] List<CardLayout> layouts = new();
+    private readonly Dictionary<CardInstance, CardView> _cardInstances = new();
 
     private void Awake()
     {
@@ -32,6 +34,8 @@ public class CardGame : MonoBehaviour
         {
             CreateCard(cardAsset, 1);
         }
+
+        StartTurn();
     }
 
     private void CreateCard(CardAsset cardAsset, int layoutId)
@@ -58,8 +62,22 @@ public class CardGame : MonoBehaviour
         int cardPosition = GetCardsInLayout(newLayoutId).Count + 1;
         cardInstance.MoveToLayout(newLayoutId, cardPosition);
     }
+
     public List<CardView> GetCardsInLayout(int layoutId)
     {
         return (from pair in _cardInstances where pair.Key.LayoutId == layoutId select pair.Value).ToList();
+    }
+
+    private void StartTurn()
+    {
+        foreach (var playerLayout in layouts.Where(playerLayout => playerLayout.playerLayout))
+        {
+            for (int i = 0; i < handCapacity; i++)
+            {
+                var cardsInLayout = GetCardsInLayout(1).OrderBy(view => view.CardInstance.CardPosition).ToList();
+                if (cardsInLayout.Count <= 0) break;
+                MoveToLayout(cardsInLayout[0].CardInstance, playerLayout.layoutId);
+            }
+        }
     }
 }
