@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96f5a083221154c9a9796ba5d0a5e187, type: 3}
-  m_Name: FirstAsset
+  m_Name: JackHearts
   m_EditorClassIdentifier: 
-  cardName: SixClubs
-  cardColor: {r: 0, g: 0, b: 0, a: 0}
-  cardImage: {fileID: 21300000, guid: 9a1566115486943348de06db391f77f1, type: 3}
+  cardRank: 3
+  cardSuit: 0
+  cardImage: {fileID: 21300000, guid: fd130c9f50ca3445396eb763399fbd33, type: 3}
