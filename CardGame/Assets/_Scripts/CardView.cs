@@ -19,4 +19,13 @@ public class CardView : MonoBehaviour
             frontImage.GetComponent<SpriteRenderer>().sprite = CardInstance.CardAsset.cardImage;
         }
     }
+    
+    // Реализация поворота карт
+    public void Rotate(bool faceUp)
+    {
+        var front = transform.GetChild(0).transform.GetChild(0);
+        var back = transform.GetChild(0).transform.GetChild(1);
+        front.gameObject.SetActive(faceUp);
+        back.gameObject.SetActive(!faceUp);
+    }
 }

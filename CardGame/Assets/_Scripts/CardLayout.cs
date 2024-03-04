@@ -20,6 +20,9 @@ public class CardLayout : MonoBehaviour
             Vector3 newPosition = offset * cardView.CardInstance.CardPosition;
 
             cardView.transform.position = cardRectTransform.transform.position + newPosition;
+            
+            // Поворачиваем карту нужной стороной
+            cardView.Rotate(faceUp);
         }
     }
 }
