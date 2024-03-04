@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96f5a083221154c9a9796ba5d0a5e187, type: 3}
-  m_Name: ThirdAsset
+  m_Name: QueenDiamonds
   m_EditorClassIdentifier: 
-  cardName: EightSpades
-  cardColor: {r: 0, g: 0, b: 0, a: 0}
-  cardImage: {fileID: 21300000, guid: 39a0e5742123040c595ba3be52718528, type: 3}
+  cardRank: 2
+  cardSuit: 1
+  cardImage: {fileID: 21300000, guid: 4413ca2ee932941589f6f3cfca98c655, type: 3}
