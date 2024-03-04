@@ -20,9 +20,17 @@ public class CardLayout : MonoBehaviour
             Vector3 newPosition = offset * cardView.CardInstance.CardPosition;
 
             cardView.transform.position = cardRectTransform.transform.position + newPosition;
-            
+
             // Поворачиваем карту нужной стороной
             cardView.Rotate(faceUp);
+
+            // Для центра и сброса настраиванем параметр порядка отображения слоев для лучшего визуального отображения
+            if (layoutId == 2 || layoutId == 3)
+            {
+                SpriteRenderer spriteRenderer =
+                    cardView.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
+                spriteRenderer.sortingOrder = cardView.CardInstance.CardPosition;
+            }
         }
     }
 }

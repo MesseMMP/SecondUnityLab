@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layoutId: 2
-  offset: {x: 0, y: 0}
+  offset: {x: 0, y: 0.2}
   faceUp: 0
   playerLayout: 0
 --- !u!1 &1661889469
@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layoutId: 3
-  offset: {x: 0, y: 0}
+  offset: {x: 0.5, y: 0.5}
   faceUp: 1
   playerLayout: 0
 --- !u!1 &1717697546
